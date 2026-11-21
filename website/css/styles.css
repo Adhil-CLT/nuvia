@@ -121,7 +121,7 @@ button {
 }
 
 /* ==========================================================================
-   Ambient Dynamic Backlight Mesh (Fluid Organic Motion)
+   Ambient Dynamic Backlight Mesh (Continuous Seamless Moving Atmosphere)
    ========================================================================== */
 
 .ambient-aura {
@@ -135,45 +135,54 @@ button {
 .aura-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(95px);
-  opacity: 0.38;
+  filter: blur(85px);
+  opacity: 0.45;
   will-change: transform;
 }
 
 .aura-1 {
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, #0ea5e9 0%, #0284c7 45%, transparent 70%);
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, #00d2ff 0%, #0284c7 45%, transparent 70%);
   top: -150px;
   left: 5%;
-  animation: auraFloatOne 14s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation: auraFloatOne 13s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .aura-2 {
-  width: 650px;
-  height: 650px;
+  width: 680px;
+  height: 680px;
   background: radial-gradient(circle, #06d6a0 0%, #059669 45%, transparent 70%);
-  top: 35%;
-  right: -100px;
-  animation: auraFloatTwo 18s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  top: 30%;
+  right: -80px;
+  animation: auraFloatTwo 16s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .aura-3 {
-  width: 600px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   background: radial-gradient(circle, #8b5cf6 0%, #6366f1 45%, transparent 70%);
-  bottom: 0px;
+  bottom: 5%;
   left: 10%;
-  animation: auraFloatThree 16s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation: auraFloatThree 15s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .aura-4 {
-  width: 520px;
-  height: 520px;
+  width: 580px;
+  height: 580px;
   background: radial-gradient(circle, #38bdf8 0%, #10b981 40%, transparent 70%);
-  top: 55%;
-  left: 50%;
-  animation: auraFloatFour 20s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  top: 60%;
+  left: 45%;
+  animation: auraFloatFour 18s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.aura-5 {
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, #ec4899 0%, #a855f7 40%, transparent 70%);
+  top: 15%;
+  right: 25%;
+  animation: auraFloatFive 19s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 @keyframes auraFloatOne {
@@ -181,10 +190,10 @@ button {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
   50% {
-    transform: translate3d(140px, 100px, 0) scale(1.18) rotate(35deg);
+    transform: translate3d(160px, 120px, 0) scale(1.2) rotate(35deg);
   }
   100% {
-    transform: translate3d(-80px, 160px, 0) scale(0.92) rotate(-25deg);
+    transform: translate3d(-90px, 180px, 0) scale(0.9) rotate(-25deg);
   }
 }
 
@@ -193,22 +202,22 @@ button {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
   50% {
-    transform: translate3d(-160px, -110px, 0) scale(1.22) rotate(-40deg);
+    transform: translate3d(-180px, -130px, 0) scale(1.25) rotate(-40deg);
   }
   100% {
-    transform: translate3d(-90px, 130px, 0) scale(0.88) rotate(25deg);
+    transform: translate3d(-100px, 150px, 0) scale(0.85) rotate(25deg);
   }
 }
 
 @keyframes auraFloatThree {
   0% {
-    transform: translate3d(0, 0, 0) scale(0.95);
+    transform: translate3d(0, 0, 0) scale(0.92);
   }
   50% {
-    transform: translate3d(160px, -120px, 0) scale(1.25);
+    transform: translate3d(180px, -140px, 0) scale(1.28);
   }
   100% {
-    transform: translate3d(50px, 100px, 0) scale(1.05);
+    transform: translate3d(60px, 120px, 0) scale(1.05);
   }
 }
 
@@ -217,10 +226,22 @@ button {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(-120px, 140px, 0) scale(1.28);
+    transform: translate3d(-140px, 160px, 0) scale(1.3);
   }
   100% {
-    transform: translate3d(130px, -80px, 0) scale(0.92);
+    transform: translate3d(150px, -90px, 0) scale(0.9);
+  }
+}
+
+@keyframes auraFloatFive {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(-150px, 110px, 0) scale(1.22);
+  }
+  100% {
+    transform: translate3d(120px, -130px, 0) scale(0.88);
   }
 }
 
@@ -801,9 +822,8 @@ button {
    ========================================================================== */
 
 .experience-section-wrap {
-  background: var(--bg-surface);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  border: none;
 }
 
 .gallery-tabs-bar {
@@ -922,7 +942,9 @@ button {
 }
 
 .glass-narrative-card {
-  background: var(--bg-surface-elevated);
+  background: rgba(14, 20, 32, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-card);
   padding: clamp(2rem, 4.5vw, 3.5rem);
@@ -1021,7 +1043,9 @@ button {
 }
 
 .spec-tile {
-  background: var(--bg-surface);
+  background: rgba(14, 20, 32, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-card);
   padding: 2.25rem;
@@ -1090,11 +1114,13 @@ button {
    ========================================================================== */
 
 .changelog-section-wrap {
-  background: var(--bg-surface);
+  background: transparent;
 }
 
 .changelog-card-frame {
-  background: var(--bg-surface-elevated);
+  background: rgba(14, 20, 32, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-card);
   padding: clamp(2rem, 4vw, 3.5rem);
@@ -1215,7 +1241,9 @@ button {
 }
 
 .dl-product-card {
-  background: var(--bg-surface);
+  background: rgba(14, 20, 32, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-card);
   padding: 2.25rem 1.85rem;
@@ -1328,9 +1356,9 @@ button {
    ========================================================================== */
 
 .site-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
   padding-block: 4.5rem 3rem;
-  background: var(--bg-black);
+  background: transparent;
 }
 
 .footer-content-wrap {

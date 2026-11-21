@@ -360,11 +360,11 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   6. Ambient Light Parallax Flow (Mouse & Scroll Reactions)
+   6. Ambient Light Parallax Flow (Container Parallax without Killing Keyframes)
    ========================================================================== */
 function initAmbientParallax() {
-  const orbs = document.querySelectorAll('.aura-orb');
-  if (!orbs.length) return;
+  const container = document.querySelector('.ambient-aura');
+  if (!container) return;
 
   let ticking = false;
 
@@ -372,13 +372,9 @@ function initAmbientParallax() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const xPct = (e.clientX / window.innerWidth - 0.5) * 50;
-      const yPct = (e.clientY / window.innerHeight - 0.5) * 50;
-
-      orbs.forEach((orb, i) => {
-        const factor = (i + 1) * 0.35;
-        orb.style.transform = `translate3d(${xPct * factor}px, ${yPct * factor}px, 0)`;
-      });
+      const xPct = (e.clientX / window.innerWidth - 0.5) * 35;
+      const yPct = (e.clientY / window.innerHeight - 0.5) * 35;
+      container.style.transform = `translate3d(${xPct}px, ${yPct}px, 0)`;
       ticking = false;
     });
   }, { passive: true });
