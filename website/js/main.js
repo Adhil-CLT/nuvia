@@ -360,20 +360,29 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   6. Ambient Light Parallax Flow (Container Parallax without Killing Keyframes)
+   6. Ambient Light Parallax Flow (Desktop-Only Smooth Compositor Parallax)
    ========================================================================== */
 function initAmbientParallax() {
   const container = document.querySelector('.ambient-aura');
   if (!container) return;
 
+  // Only enable on desktop with a real mouse; completely skip on mobile/touch to eliminate scroll lag
+  if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) {
+    return;
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
   let ticking = false;
 
-  window.addEventListener('pointermove', (e) => {
+  window.addEventListener('mousemove', (e) => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const xPct = (e.clientX / window.innerWidth - 0.5) * 35;
-      const yPct = (e.clientY / window.innerHeight - 0.5) * 35;
+      const xPct = (e.clientX / window.innerWidth - 0.5) * 16;
+      const yPct = (e.clientY / window.innerHeight - 0.5) * 16;
       container.style.transform = `translate3d(${xPct}px, ${yPct}px, 0)`;
       ticking = false;
     });
