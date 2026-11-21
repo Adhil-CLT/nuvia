@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+
+  <title>NUViA — Bit-Perfect Hi-Res Lossless Music Experience</title>
+  <meta name="description" content="Stream YouTube Music in studio-grade FLAC, bypass Android resampling with direct USB DAC output, and sing along with Apple-style animated lyrics wrapped in liquid glass.">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/appicon.png">
+  <link rel="apple-touch-icon" href="assets/appicon.png">
+
+  <!-- Inter & JetBrains Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Light Aura (Dynamic Moving Glow Mesh) -->
+  <div class="ambient-aura" aria-hidden="true">
+    <div class="aura-orb aura-1"></div>
+    <div class="aura-orb aura-2"></div>
+    <div class="aura-orb aura-3"></div>
+    <div class="aura-orb aura-4"></div>
+  </div>
+
+  <div class="site-content">
+
+    <!-- ====================================================================
+         Floating Liquid Glass Top Island (Desktop & Mobile Premium)
+         ==================================================================== -->
+    <header class="floating-header-wrapper">
+      <div class="floating-navbar-island">
+        <a href="#" class="brand-combo" aria-label="NUViA Home">
+          <img src="assets/bglogo.png" alt="NUViA Logo" class="brand-icon-mark">
+          <span class="brand-name-text">NUViA</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links-menu" aria-label="Site Navigation">
+          <a href="#overview" class="nav-link-btn">Overview</a>
+          <a href="#experience" class="nav-link-btn">Experience</a>
+          <a href="#audiophile" class="nav-link-btn">Hi-Res DAC</a>
+          <a href="#changelog" class="nav-link-btn">Changelog</a>
+          <a href="#downloads" class="nav-link-btn">Downloads</a>
+        </nav>
+
+        <!-- Header Actions: Download CTA + Mobile Menu Toggle -->
+        <div class="header-actions-group">
+          <a href="downloads/NUViA-v1.2.1-arm64-v8a.apk" class="nav-cta-pill" download="NUViA-v1.2.1-arm64-v8a.apk">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="cta-label">Download APK</span>
+          </a>
+
+          <button id="mobileMenuToggle" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+            <span class="hamburger-line line-1"></span>
+            <span class="hamburger-line line-2"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Glass Drawer -->
+      <div id="mobileMenuDrawer" class="mobile-nav-drawer" aria-hidden="true">
+        <div class="mobile-drawer-inner">
+          <nav class="mobile-drawer-links">
+            <a href="#overview" class="mobile-nav-link">
+              <span>Overview</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#experience" class="mobile-nav-link">
+              <span>Experience</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#audiophile" class="mobile-nav-link">
+              <span>Hi-Res DAC</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#changelog" class="mobile-nav-link">
+              <span>Changelog</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="#downloads" class="mobile-nav-link">
+              <span>Downloads</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </nav>
+
+          <div class="mobile-drawer-actions">
+            <a href="downloads/NUViA-v1.2.1-arm64-v8a.apk" class="drawer-btn-primary" download="NUViA-v1.2.1-arm64-v8a.apk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Mobile APK</span>
+            </a>
+            <a href="downloads/NUViATV-v1.2.1-arm64-v8a.apk" class="drawer-btn-secondary" download="NUViATV-v1.2.1-arm64-v8a.apk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+              <span>Android TV Edition</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         Hero Section: Bold Typography & LIVE VIDEO Centrepiece
+         ==================================================================== -->
+    <section id="overview" class="section hero-wrap">
+      <div class="container hero-grid-split">
+
+        <!-- Hero Text & 1-Click Download CTAs -->
+        <div class="hero-text-block">
+          <div class="hero-pill-badge">
+            <span class="active-indicator"></span>
+            <span>Official Signed Release · Ready to Install</span>
+          </div>
+
+          <h1 class="hero-h1">
+            Music, Uncompromised.<br>
+            <span class="highlight-cyan">Bit-Perfect Hi-Res.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Stream the entire YouTube Music catalog in studio-grade FLAC. Experience Apple-style animated lyrics, hardware USB DAC bit-perfect output, and 0–12s Automix crossfade wrapped in bespoke liquid glass.
+          </p>
+
+          <div class="hero-btn-row">
+            <a href="downloads/NUViA-v1.2.1-arm64-v8a.apk" class="btn-white-action" download="NUViA-v1.2.1-arm64-v8a.apk" id="heroPrimaryDownload">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download for Android</span>
+              <span class="btn-subinfo">(ARM64 · 83.5 MB)</span>
+            </a>
+
+            <a href="downloads/NUViATV-v1.2.1-arm64-v8a.apk" class="btn-glass-action" download="NUViATV-v1.2.1-arm64-v8a.apk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+              <span>Android TV Edition</span>
+            </a>
+          </div>
+
+          <!-- Audiophile Highlights Row -->
+          <div class="hero-specs-row">
+            <div class="spec-unit">
+              <span class="spec-unit-value">24-bit / 192kHz</span>
+              <span class="spec-unit-label">Lossless FLAC &amp; ALAC</span>
+            </div>
+            <div class="spec-unit">
+              <span class="spec-unit-value">Bit-Perfect</span>
+              <span class="spec-unit-label">USB DAC Hardware Direct</span>
+            </div>
+            <div class="spec-unit">
+              <span class="spec-unit-value">Word-Synced</span>
+              <span class="spec-unit-label">Apple-Style Lyrics</span>
+            </div>
+            <div class="spec-unit">
+              <span class="spec-unit-value">100% Free</span>
+              <span class="spec-unit-label">Open Source &amp; Ad-Free</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Height Flagship Phone with LIVE VIDEO Centerpiece -->
+        <div class="hero-phone-showcase">
+          <div class="phone-ambient-aura" aria-hidden="true"></div>
+
+          <!-- Titanium Bezel Phone Mockup with Smooth Autoplaying Video -->
+          <div class="phone-titanium-bezel">
+            <div class="phone-camera-punchhole" aria-hidden="true"></div>
+            <div class="phone-screen-viewport">
+              <video id="heroVideoPlayer" autoplay muted loop playsinline preload="auto" poster="assets/home-screen.jpg">
+                <source src="assets/nuvia-demo-1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <!-- Video Switcher & Audio Controls -->
+          <div class="video-switcher-bar">
+            <button class="video-demo-pill active" data-src="assets/nuvia-demo-1.mp4">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Demo 1 · Fluid Motion</span>
+            </button>
+            <button class="video-demo-pill" data-src="assets/nuvia-demo-2.mp4">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Demo 2 · Gestures &amp; Lyrics</span>
+            </button>
+            <button id="videoSoundToggle" class="video-sound-pill" aria-label="Toggle Sound" title="Toggle Sound">
+              <svg id="soundMutedIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+              <svg id="soundUnmutedIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         The NUViA Experience: Interactive Master UI Showcase
+         Full Uncropped Screens, Zero Chopping, Real Device Proportions
+         ==================================================================== -->
+    <section id="experience" class="section experience-section-wrap">
+      <div class="container">
+        <div class="section-intro">
+          <span class="intro-tag">Pure Interface</span>
+          <h2 class="intro-heading">Experience NUViA</h2>
+          <p class="intro-desc">
+            Explore every screen in authentic, uncropped high fidelity. Click any tab below to inspect the interface.
+          </p>
+        </div>
+
+        <!-- Master Screen Navigation Tabs -->
+        <div class="gallery-tabs-bar" role="tablist" aria-label="NUViA Screens">
+          <button class="gallery-tab active" data-screen="home" role="tab" aria-selected="true">
+            <span class="tab-dot"></span>
+            <span>Home Feed</span>
+          </button>
+          <button class="gallery-tab" data-screen="lyrics" role="tab" aria-selected="false">
+            <span class="tab-dot"></span>
+            <span>Apple-Style Lyrics</span>
+          </button>
+          <button class="gallery-tab" data-screen="canvas" role="tab" aria-selected="false">
+            <span class="tab-dot"></span>
+            <span>Canvas Player</span>
+          </button>
+          <button class="gallery-tab" data-screen="queue" role="tab" aria-selected="false">
+            <span class="tab-dot"></span>
+            <span>Automix &amp; Queue</span>
+          </button>
+          <button class="gallery-tab" data-screen="library" role="tab" aria-selected="false">
+            <span class="tab-dot"></span>
+            <span>Library Insights</span>
+          </button>
+          <button class="gallery-tab" data-screen="actions" role="tab" aria-selected="false">
+            <span class="tab-dot"></span>
+            <span>Liquid Sheet</span>
+          </button>
+        </div>
+
+        <!-- Master Interactive Showcase Stage -->
+        <div class="master-showcase-stage">
+          <!-- Left: Full-Height Device Display (100% Uncropped) -->
+          <div class="showcase-device-wrapper">
+            <div class="stage-ambient-glow" id="stageAura" aria-hidden="true"></div>
+            <div class="stage-titanium-phone">
+              <div class="phone-camera-punchhole" aria-hidden="true"></div>
+              <div class="stage-screen-view">
+                <img id="masterScreenImg" src="assets/home-screen.jpg" alt="NUViA Homescreen" class="stage-screen-img" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dynamic Narrative Card -->
+          <div class="showcase-content-wrapper">
+            <div class="glass-narrative-card">
+              <span class="narrative-tag" id="narrativeTag">Curated Discovery</span>
+              <h3 class="narrative-title" id="narrativeTitle">Home Feed &amp; Liquid Glass Dock</h3>
+              <p class="narrative-lead" id="narrativeLead">
+                A pristine dark home feed tailored for quick music discovery. Highlights "Top Picks for You" with rich album artwork, recent tracks, and the signature floating Liquid Glass navigation dock.
+              </p>
+
+              <div class="narrative-grid" id="narrativeGrid">
+                <div class="narrative-box">
+                  <div class="box-title">Liquid Glass Floating Dock</div>
+                  <div class="box-desc">Haze-powered translucent glass pill with active green indicator, instant section hopping, and dedicated search launcher.</div>
+                </div>
+                <div class="narrative-box">
+                  <div class="box-title">Floating Mini-Player</div>
+                  <div class="box-desc">Seamless track controls hover gracefully over your feed without blocking content.</div>
+                </div>
+              </div>
+
+              <div class="narrative-footer" id="narrativeFooter">
+                <div class="credit-pill">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  <span>Material 3 extracted color palette with Telegram-style Haze glass</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Audiophile Spec Blocks: Bit-Perfect USB DAC & Telemetry
+         ==================================================================== -->
+    <section id="audiophile" class="section">
+      <div class="container">
+        <div class="section-intro">
+          <span class="intro-tag">Sound Precision</span>
+          <h2 class="intro-heading">Pure Audio Architecture</h2>
+          <p class="intro-desc">
+            Direct hardware telemetry, per-network streaming ceilings, and offline bit-perfect storage.
+          </p>
+        </div>
+
+        <div class="specs-tri-grid">
+          <div class="spec-tile">
+            <span class="spec-kicker">Direct USB Hardware</span>
+            <h3>Bit-Perfect Audio Engine</h3>
+            <p>
+              Direct USB communication bypasses Android's 48kHz audio mixer. AAudio exclusive mode switches native sample rates per track, with automatic DAC release on pause. Thanks to <strong>Mornye</strong> for the reference.
+            </p>
+            <ul class="spec-bullet-list">
+              <li>Direct USB &amp; AAudio exclusive sessions</li>
+              <li>Per-track native sample rate matching (up to 192kHz)</li>
+              <li>DAC release on pause to preserve battery</li>
+              <li>Zero dropouts with screen turned off</li>
+            </ul>
+          </div>
+
+          <div class="spec-tile">
+            <span class="spec-kicker">Lossless Sources</span>
+            <h3>FLAC / ALAC Pipeline</h3>
+            <p>
+              Configured module sources stream studio-grade lossless audio with YouTube Music fallback. Pre-flight checks verify duration and artist before playing, preventing 30-second previews.
+            </p>
+            <ul class="spec-bullet-list">
+              <li>Direct FLAC &amp; ALAC streams</li>
+              <li>Pre-flight duration &amp; artist matching</li>
+              <li>Multi-quality addon tier selector</li>
+              <li>Offline downloads with embedded ID3 tags</li>
+            </ul>
+          </div>
+
+          <div class="spec-tile">
+            <span class="spec-kicker">Controls &amp; Tweaks</span>
+            <h3>Stats for Nerds &amp; Quality Caps</h3>
+            <p>
+              Inspect real-time stream telemetry (codec, bit depth, sample frequency, buffer latency) right on the Now Playing screen. Set separate quality ceilings for Wi-Fi and mobile data.
+            </p>
+            <ul class="spec-bullet-list">
+              <li>Real-time Stats for Nerds overlay</li>
+              <li>Independent Wi-Fi &amp; cellular quality limits</li>
+              <li>System equalizer integration</li>
+              <li>Adjustable sleep timer presets</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Changelog v1.2.1
+         ==================================================================== -->
+    <section id="changelog" class="section changelog-section-wrap">
+      <div class="container">
+        <div class="section-intro">
+          <span class="intro-tag">Release Notes</span>
+          <h2 class="intro-heading">What's New</h2>
+        </div>
+
+        <div class="changelog-card-frame">
+          <div class="changelog-header-strip">
+            <div class="changelog-badge-combo">
+              <span class="version-chip-solid">Production Release</span>
+              <span class="changelog-status-text">Official Signed Build</span>
+            </div>
+            <span class="changelog-platform-note">Android Mobile &amp; TV</span>
+          </div>
+
+          <div class="changelog-3col-grid">
+            <div>
+              <h4 class="changelog-col-title">Player &amp; Themes</h4>
+              <ul class="changelog-items-ul">
+                <li><strong>New Player Themes:</strong> Default, Simple, and Legacy layouts.</li>
+                <li><strong>Disable Blend Effects:</strong> Display player icons, text, and menus in pure solid white.</li>
+                <li><strong>Edge-to-Edge Covers:</strong> Full-screen cover art that runs to the edges of the display.</li>
+                <li><strong>Lighter Frost Mode:</strong> Optimized glass shaders for devices that struggle with heavy blur.</li>
+                <li><strong>High-Contrast Search:</strong> Polished search field readability over translucent glass.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="changelog-col-title">Audio &amp; Automix</h4>
+              <ul class="changelog-items-ul">
+                <li><strong>Automix Overview:</strong> View the upcoming beat-matched transition in the song menu.</li>
+                <li><strong>Music-Only Video Mode:</strong> Plays music videos as pure audio with pre-converted crossfade buffers.</li>
+                <li><strong>Bit-Perfect DAC Polishing:</strong> No dropouts with screen off on USB/AAudio exclusive; DAC released on long pauses.</li>
+                <li><strong>Direct Stream Validation:</strong> Validates track duration and artist before playback.</li>
+                <li><strong>Multi-Quality Addons:</strong> Quality picker for multi-tier sources.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="changelog-col-title">Performance &amp; System</h4>
+              <ul class="changelog-items-ul">
+                <li><strong>R8 Minification:</strong> Bytecode inlining for fast cold boot and smooth 120fps scrolling.</li>
+                <li><strong>Smooth Page Switches:</strong> Fixed transition specs to eliminate dark dips during navigation.</li>
+                <li><strong>Content Preferences:</strong> Hide Recents, Top Picks, or Moods, and show square video thumbnails.</li>
+                <li><strong>Pure Offline Stability:</strong> Completely removed update popups and banners.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Single-Click Download Hub (Mobile & TV ONLY — Zero Web Version)
+         ==================================================================== -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <div class="section-intro">
+          <span class="intro-tag">Ready to Launch</span>
+          <h2 class="intro-heading">Get NUViA</h2>
+          <p class="intro-desc">
+            Direct, signed production release APKs with instant 1-click downloads.
+          </p>
+        </div>
+
+        <!-- Download Tabs: Mobile & TV Only -->
+        <div class="download-tabs-bar" role="tablist" aria-label="Target Platform">
+          <button class="dl-tab-pill active" data-target="paneMobile" role="tab" aria-selected="true">Android Mobile</button>
+          <button class="dl-tab-pill" data-target="paneTv" role="tab" aria-selected="false">Android TV</button>
+        </div>
+
+        <!-- Mobile Downloads Pane -->
+        <div id="paneMobile" class="dl-pane active" role="tabpanel">
+          <div class="dl-platform-cards">
+            <!-- ARM64 -->
+            <div class="dl-product-card top-choice">
+              <span class="choice-tag">Recommended</span>
+              <h3 class="product-name">ARM64-v8a</h3>
+              <div class="product-subtext">
+                <span>Official Build</span>
+                <span>·</span>
+                <span>83.5 MB</span>
+                <span>·</span>
+                <span>Android 8.0+</span>
+              </div>
+              <p class="product-blurb">
+                Optimized for modern 64-bit phones (Samsung, Xiaomi, Pixel, OnePlus, etc.). Maximum performance with full R8 bytecode inlining.
+              </p>
+              <a href="downloads/NUViA-v1.2.1-arm64-v8a.apk" class="btn-white-action" download="NUViA-v1.2.1-arm64-v8a.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Mobile APK</span>
+              </a>
+            </div>
+
+            <!-- Universal Mobile -->
+            <div class="dl-product-card">
+              <h3 class="product-name">Universal Build</h3>
+              <div class="product-subtext">
+                <span>Official Build</span>
+                <span>·</span>
+                <span>189.5 MB</span>
+                <span>·</span>
+                <span>All Devices</span>
+              </div>
+              <p class="product-blurb">
+                Contains native binaries for all CPU architectures. Guaranteed to install on any Android phone or tablet.
+              </p>
+              <a href="downloads/NUViA-v1.2.1-universal.apk" class="btn-glass-action" download="NUViA-v1.2.1-universal.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Universal</span>
+              </a>
+            </div>
+
+            <!-- ARMv7 -->
+            <div class="dl-product-card">
+              <h3 class="product-name">ARMv7 (32-bit)</h3>
+              <div class="product-subtext">
+                <span>Official Build</span>
+                <span>·</span>
+                <span>73.2 MB</span>
+                <span>·</span>
+                <span>Legacy</span>
+              </div>
+              <p class="product-blurb">
+                Tailored for older 32-bit Android phones and legacy devices.
+              </p>
+              <a href="downloads/NUViA-v1.2.1-armeabi-v7a.apk" class="btn-glass-action" download="NUViA-v1.2.1-armeabi-v7a.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download ARMv7</span>
+              </a>
+            </div>
+
+            <!-- x86_64 -->
+            <div class="dl-product-card">
+              <h3 class="product-name">x86_64</h3>
+              <div class="product-subtext">
+                <span>Official Build</span>
+                <span>·</span>
+                <span>90.1 MB</span>
+                <span>·</span>
+                <span>Emulators &amp; WSA</span>
+              </div>
+              <p class="product-blurb">
+                For Android emulators, ChromeOS Chromebooks, and Windows Subsystem for Android.
+              </p>
+              <a href="downloads/NUViA-v1.2.1-x86_64.apk" class="btn-glass-action" download="NUViA-v1.2.1-x86_64.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download x86_64</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TV Downloads Pane -->
+        <div id="paneTv" class="dl-pane" role="tabpanel">
+          <div class="dl-platform-cards">
+            <!-- TV ARM64 -->
+            <div class="dl-product-card top-choice">
+              <span class="choice-tag choice-tag-tv">TV Edition</span>
+              <h3 class="product-name">TV ARM64-v8a</h3>
+              <div class="product-subtext">
+                <span>TV Build</span>
+                <span>·</span>
+                <span>79.1 MB</span>
+                <span>·</span>
+                <span>Android 7.0+</span>
+              </div>
+              <p class="product-blurb">
+                10-foot Leanback interface designed for D-pad navigation on Nvidia Shield, Google TV boxes, and smart TVs.
+              </p>
+              <a href="downloads/NUViATV-v1.2.1-arm64-v8a.apk" class="btn-white-action" download="NUViATV-v1.2.1-arm64-v8a.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                <span>Download TV APK</span>
+              </a>
+            </div>
+
+            <!-- TV Universal -->
+            <div class="dl-product-card">
+              <h3 class="product-name">TV Universal</h3>
+              <div class="product-subtext">
+                <span>TV Build</span>
+                <span>·</span>
+                <span>178.9 MB</span>
+                <span>·</span>
+                <span>All TV Devices</span>
+              </div>
+              <p class="product-blurb">
+                Universal bundle for Android TV boxes, projectors, and Google TV sticks.
+              </p>
+              <a href="downloads/NUViATV-v1.2.1-universal.apk" class="btn-glass-action" download="NUViATV-v1.2.1-universal.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                <span>Download Universal TV</span>
+              </a>
+            </div>
+
+            <!-- TV ARMv7 -->
+            <div class="dl-product-card">
+              <h3 class="product-name">TV ARMv7 (32-bit)</h3>
+              <div class="product-subtext">
+                <span>TV Build</span>
+                <span>·</span>
+                <span>69.6 MB</span>
+                <span>·</span>
+                <span>Fire TV / Sticks</span>
+              </div>
+              <p class="product-blurb">
+                Optimized for 32-bit streaming sticks and compact smart TVs.
+              </p>
+              <a href="downloads/NUViATV-v1.2.1-armeabi-v7a.apk" class="btn-glass-action" download="NUViATV-v1.2.1-armeabi-v7a.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                <span>Download ARMv7 TV</span>
+              </a>
+            </div>
+
+            <!-- TV x86_64 -->
+            <div class="dl-product-card">
+              <h3 class="product-name">TV x86_64</h3>
+              <div class="product-subtext">
+                <span>TV Build</span>
+                <span>·</span>
+                <span>85.3 MB</span>
+                <span>·</span>
+                <span>Android-x86 / VM</span>
+              </div>
+              <p class="product-blurb">
+                For Android TV x86 virtual machines and PC TV installations.
+              </p>
+              <a href="downloads/NUViATV-v1.2.1-x86_64.apk" class="btn-glass-action" download="NUViATV-v1.2.1-x86_64.apk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                <span>Download x86_64 TV</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Installation Instructions -->
+        <div class="install-guide-strip">
+          <div class="install-step">
+            <span class="step-num">1</span>
+            <div>
+              <div class="step-title">Single-Click Download</div>
+              <div class="step-desc">Click any APK above to download immediately to your phone, tablet, or TV.</div>
+            </div>
+          </div>
+          <div class="install-step">
+            <span class="step-num">2</span>
+            <div>
+              <div class="step-title">Allow Sideloading</div>
+              <div class="step-desc">Enable "Install unknown apps" in Android Settings if prompted.</div>
+            </div>
+          </div>
+          <div class="install-step">
+            <span class="step-num">3</span>
+            <div>
+              <div class="step-title">Launch &amp; Enjoy</div>
+              <div class="step-desc">Open NUViA to stream in bit-perfect lossless with zero ads.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Footer: Acknowledgements & Open-Source Credits
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-content-wrap">
+        <div class="footer-brand-side">
+          <div class="brand-combo">
+            <img src="assets/bglogo.png" alt="NUViA Logo" class="brand-icon-mark">
+            <span class="brand-name-text">NUViA</span>
+          </div>
+          <p class="footer-tagline">
+            High-Resolution Bit-Perfect Audio Player for Android &amp; Android TV.
+          </p>
+          <div class="footer-license">Released under open-source licenses · No tracking · No advertisements</div>
+        </div>
+
+        <div class="footer-links-side">
+          <div class="footer-col">
+            <span class="footer-heading">Ecosystem</span>
+            <a href="#overview">Overview</a>
+            <a href="#experience">Experience</a>
+            <a href="#audiophile">Hi-Res DAC</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-heading">Releases</span>
+            <a href="#downloads">Android Mobile</a>
+            <a href="#downloads">Android TV</a>
+            <a href="#changelog">Changelog</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-heading">Acknowledgements</span>
+            <a href="https://github.com/binimum/am-lyrics" target="_blank" rel="noopener">binimum (am-lyrics)</a>
+            <a href="https://github.com/mornyeapp/Mornye" target="_blank" rel="noopener">Mornye (USB DAC)</a>
+            <a href="https://lrclib.net/" target="_blank" rel="noopener">LRCLIB</a>
+            <a href="https://lrc.red/" target="_blank" rel="noopener">lrc.red</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
